@@ -17,7 +17,7 @@
   cmd = open -W -a Meld --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
 [user]
 	name = Graham Reid
-	email = graham.reid@ge.com
+	email = kirtar18@gmail.com 
 [commit]
 	template = /Users/grahamreid/.stCommitMsg
 [alias]
