@@ -17,14 +17,10 @@
   (unless (package-installed-p package)
     (package-install package))))
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (cyberpunk)))
  '(custom-safe-themes
    (quote
-    ("38e64ea9b3a5e512ae9547063ee491c20bd717fe59d9c12219a0b1050b439cdd" default)))
+    ("d1cc05d755d5a21a31bced25bed40f85d8677e69c73ca365628ce8024827c9e3" "38e64ea9b3a5e512ae9547063ee491c20bd717fe59d9c12219a0b1050b439cdd" default)))
  '(eshell-output-filter-functions
    (quote
     (eshell-handle-control-codes eshell-handle-ansi-color eshell-watch-for-password-prompt)))
@@ -37,19 +33,12 @@
      (wl . wl-other-frame))))
  '(package-selected-packages
    (quote
-    (virtualenvwrapper hive exec-path-from-shell js2-mode typescript-mode sr-speedbar json-mode magit emmet-mode matlab-mode linum-relative impatient-mode use-package flycheck cyberpunk-theme)))
+    (exec-path-from-shell linum-relative virtualenvwrapper hive js2-mode typescript-mode sr-speedbar json-mode magit emmet-mode matlab-mode impatient-mode use-package flycheck cyberpunk-theme)))
  '(python-shell-interpreter "python3"))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(default ((t (:family "Monaco" :foundry "outline" :slant normal :weight normal :height 98 :width normal)))))
-(define-globalized-minor-mode my-global-rel-linum-mode  linum-relative-mode
-  (lambda () (linum-relative-mode 1)))
-(my-global-rel-linum-mode 1)
 
-(setq explicit-shell-file-name "/bin/bash")
+(setq explicit-shell-file-name "/usr/local/bin/zsh")
 
 (setq url-proxy-services
       '(("no_proxy" . "^\\(localhost\\|10.*\\)")
@@ -63,32 +52,12 @@
 
 (exec-path-from-shell-initialize)
 
-;; -------- Python Dev settings --------- ;;
-
-(require 'virtualenvwrapper)
-(venv-initialize-interactive-shells)
-(venv-initialize-eshell)
-(setq venv-location "~/.virtualenvs")
-
 ;; -------- Window arrangement --------- ;;
 
-;; (load "doremi-frm.el")
-;; (setq doremi-file "~/emacs_includes/doremi-frm.el")
-;; (load-file 
-;;   (expand-file-name doremi-file
-;;                     (file-name-directory (buffer-file-name))))
 (global-set-key (kbd "<M-down>") 'shrink-window)
 (global-set-key (kbd "<M-up>") 'enlarge-window)
 (global-set-key (kbd "<M-left>") 'shrink-window-horizontally)
 (global-set-key (kbd "<M-right>") 'enlarge-window-horizontally)
-
-;; -------- Workgroup settings --------- ;;
-
-(require 'workgroups)
-(setq wg-prefix-key (kbd "C-c w"))
-(workgroups-mode 1)
-(wg-load "~/.emacs.d/workgroups_save")
-(wg-toggle-morph)
 
 ;; -------- MY SETTINGS FOR WEB DEV ---------- ;;
 
