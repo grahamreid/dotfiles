@@ -17,6 +17,10 @@
   (unless (package-installed-p package)
     (package-install package))))
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (cyberpunk)))
  '(custom-safe-themes
    (quote
@@ -33,9 +37,13 @@
      (wl . wl-other-frame))))
  '(package-selected-packages
    (quote
-    (exec-path-from-shell linum-relative virtualenvwrapper hive js2-mode typescript-mode sr-speedbar json-mode magit emmet-mode matlab-mode impatient-mode use-package flycheck cyberpunk-theme)))
+    (pyvenv exec-path-from-shell linum-relative virtualenvwrapper hive js2-mode typescript-mode sr-speedbar json-mode magit emmet-mode matlab-mode impatient-mode use-package flycheck cyberpunk-theme)))
  '(python-shell-interpreter "python3"))
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(default ((t (:family "Monaco" :foundry "outline" :slant normal :weight normal :height 98 :width normal)))))
 
 (setq explicit-shell-file-name "/usr/local/bin/zsh")
@@ -80,12 +88,18 @@
 ;; ------- SQL settings ------ ;;
 
 (setq sql-connection-alist
-      '((aur-dev-hpsa (sql-product 'postgres)
+      '(
+         (blank (sql-product 'postgres)
                   (sql-port 5432)
                   (sql-server "")
-                  (sql-user "")
-                  (sql-database ""))
-      )
+                  (sql-user "opal")
+                  (sql-database "neo_corp_it"))
+         (pg-local (sql-product 'postgres)
+                  (sql-port 5432)
+                  (sql-server "localhost")
+                  (sql-user "grahamreid")
+                  (sql-database "postgres"))
+       )
 )
 
 (add-hook 'sql-interactive-mode-hook
@@ -169,3 +183,13 @@ In order to qualify, the SQLi buffer must be alive, be in
                            (and (sql-buffer-live-p b prod connection)
                                 (list (buffer-name b))))
                          (buffer-list)))))))
+
+;; (setq url-proxy-services '(("no_proxy" . "^\\(localhost\\|10.*\\)")
+;;                            ("http" . "")
+;;  			   ("https" . "")
+;;  			   ))
+
+;; ------------ KBDs ------------- ;;
+
+(global-set-key (kbd "C-c p") 'python-shell-send-buffer)
+(global-set-key (kbd "C-c v") 'pyvenv-activate)
